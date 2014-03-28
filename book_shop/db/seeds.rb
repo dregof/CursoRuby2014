@@ -10,5 +10,5 @@ books = Category.create(name: "Libros", key: "books")
 Category.create(name: "Deportes", key: "sport")
 
 %w"Rails Ruby HTML CSS".each do |name|
-  Product.create(name: name, reference: name.to_i, category: books)
+  Product.create(name: name, reference: rand(10000), category: books)
 end
