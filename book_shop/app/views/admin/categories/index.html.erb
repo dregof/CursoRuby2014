@@ -1,0 +1,31 @@
+<h1>Categorias</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Clave</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%= category.name %></td>
+        <td><%= category.key %></td>
+        <td><%= link_to 'Show', [:admin, category] %></td>
+        <td><%= link_to 'Edit', edit_admin_category_path(category) %></td>
+        <td>
+          <%= link_to 'Destroy', [:admin, category], method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Category', new_admin_category_path %>

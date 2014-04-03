@@ -1,5 +1,7 @@
 class WelcomeController < ApplicationController
+  before_action :user_signed_in?
   before_action :load_categories
+
 
   #
   #

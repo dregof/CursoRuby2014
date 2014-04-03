@@ -46,10 +46,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">BookShop</a>
+          <a class="brand" href="#">Dashboard</a>
           <div class="container nav-collapse">
             <ul class="nav">
-              <li><%= link_to "Link1", "/path1"  %></li>
+              <li>
+                <%= link_to "Categorías", admin_categories_path  %>
+              </li>
               <li><%= link_to "Link2", "/path2"  %></li>
               <li><%= link_to "Link3", "/path3"  %></li>
             </ul>
@@ -69,28 +71,16 @@
               <h3>Sidebar</h3>
               <ul class="nav nav-list">
                 <li class="nav-header">Sidebar</li>
-                <% unless @categories.blank? %>
-                  <% for category in @categories %>
-                    <li><%= link_to category.name, ""  %></li>
-                  <% end %>
-                <% else %>
-                  No hay categories
-                <% end %>
+                <li><%= link_to "Link1", "/path1"  %></li>
+                <li><%= link_to "Link2", "/path2"  %></li>
+                <li><%= link_to "Link3", "/path3"  %></li>
               </ul>
-              <% if administrator_signed_in? %>
-                <%= link_to "Log Out",
-                    destroy_administrator_session_path,
-                    method: :delete %>
-              <% end %>
             </div><!--/.well -->
           </div><!--/span-->
         </div><!--/row-->
 
       <footer>
-        <p>
-          &copy; CiTIC 2014 -
-          <%= link_to "administración", admin_root_path %>
-        </p>
+        <p>&copy; Company 2014</p>
       </footer>
 
     </div> <!-- /container -->

@@ -13,6 +13,9 @@ gem 'devise'
 gem "therubyracer"
 gem "less-rails"
 gem "twitter-bootstrap-rails"
+gem 'activerecord-session_store'
+
+gem "carrierwave"
 
 group :doc do
   gem 'sdoc', require: false
