@@ -1,0 +1,18 @@
+<div class="well sidebar-nav">
+  <h3>Sidebar</h3>
+  <ul class="nav nav-list">
+    <li class="nav-header">Sidebar</li>
+    <% unless @categories.blank? %>
+      <% for category in @categories %>
+        <li><%= link_to category.name, ""  %></li>
+      <% end %>
+    <% else %>
+      No hay categories
+    <% end %>
+  </ul>
+  <% if administrator_signed_in? %>
+    <%= link_to "Log Out",
+        destroy_administrator_session_path,
+        method: :delete %>
+  <% end %>
+</div>

@@ -8,8 +8,8 @@ class Category < ActiveRecord::Base
   has_many :products
 
   # Validaciones
-  validates :name, :key, presence: true
   validates_with LikeValidator
+  validates :name, :key, presence: true
   validates :key, uniqueness: true
   validates :key, format: {
     with: /\A[a-z]+\z/, message: "tiene que estar en minúsculas"

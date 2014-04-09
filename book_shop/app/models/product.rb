@@ -8,8 +8,13 @@ class Product < ActiveRecord::Base
 
   # Validaciones
   validates_associated :category
-  validate :name, :reference, :description, :price, presence: true
-  validate :reference, :price, numericality: true
+  validates :name, :reference, :description, :price, presence: true
+  validates :reference, :price, numericality: true
+  validates :reference, uniqueness: true
+
+  def decimal_price
+    price / 100
+  end
 
 private
   def set_price

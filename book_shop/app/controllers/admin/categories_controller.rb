@@ -1,28 +1,20 @@
 class Admin::CategoriesController < Admin::BaseController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
-  # GET /admin/categories
-  # GET /admin/categories.json
   def index
     @categories = Category.all
   end
 
-  # GET /admin/categories/1
-  # GET /admin/categories/1.json
   def show
   end
 
-  # GET /admin/categories/new
   def new
     @category = Category.new
   end
 
-  # GET /admin/categories/1/edit
   def edit
   end
 
-  # POST /admin/categories
-  # POST /admin/categories.json
   def create
     @category = Category.new(category_params)
 
@@ -37,8 +29,6 @@ class Admin::CategoriesController < Admin::BaseController
     end
   end
 
-  # PATCH/PUT /admin/categories/1
-  # PATCH/PUT /admin/categories/1.json
   def update
     respond_to do |format|
       if @category.update(category_params)
@@ -51,8 +41,6 @@ class Admin::CategoriesController < Admin::BaseController
     end
   end
 
-  # DELETE /admin/categories/1
-  # DELETE /admin/categories/1.json
   def destroy
     @category.destroy
     respond_to do |format|

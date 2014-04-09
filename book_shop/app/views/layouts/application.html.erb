@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%= yield :meta_desc %>
     <title><%= content_for?(:title) ? yield(:title) : "BookShop" %></title>
     <%= csrf_meta_tags %>
 
@@ -38,25 +39,7 @@
   </head>
   <body>
 
-    <div class="navbar">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="#">BookShop</a>
-          <div class="container nav-collapse">
-            <ul class="nav">
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
-    </div>
+    <%= render partial: "shared/navbar" %>
 
     <div class="container">
         <div class="row">
@@ -65,33 +48,11 @@
             <%= yield %>
           </div>
           <div class="span3">
-            <div class="well sidebar-nav">
-              <h3>Sidebar</h3>
-              <ul class="nav nav-list">
-                <li class="nav-header">Sidebar</li>
-                <% unless @categories.blank? %>
-                  <% for category in @categories %>
-                    <li><%= link_to category.name, ""  %></li>
-                  <% end %>
-                <% else %>
-                  No hay categories
-                <% end %>
-              </ul>
-              <% if administrator_signed_in? %>
-                <%= link_to "Log Out",
-                    destroy_administrator_session_path,
-                    method: :delete %>
-              <% end %>
-            </div><!--/.well -->
+            <%= render partial: "shared/sidebar" %>
           </div><!--/span-->
         </div><!--/row-->
 
-      <footer>
-        <p>
-          &copy; CiTIC 2014 -
-          <%= link_to "administración", admin_root_path %>
-        </p>
-      </footer>
+        <%= render partial: "shared/footer" %>
 
     </div> <!-- /container -->
 

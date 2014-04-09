@@ -1,4 +1,18 @@
+<% content_for :meta_desc do %>
+  <meta description="Mi tienda de libros">
+  <script type="text/javascript">
+    console.log("llamada desde el content_for");
+  </script>
+<% end %>
+<% content_for :title do %>
+  Los Libros del CiTIC
+<% end %>
+
 <h1>Bienvenidos</h1>
 <ul class="books">
   <%= render @products %>
+  <%# for product in @products do %>
+    <%#= render partial: "products/simple_product",
+                locals: {product: product} %>
+  <%# end %>
 </ul>

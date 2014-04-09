@@ -31,7 +31,7 @@ class Admin::ProductsController < Admin::BaseController
 
   def update
     respond_to do |format|
-      if @product.update(category_params)
+      if @product.update(product_params)
         format.html { redirect_to [:admin, @product], notice: 'Product was successfully updated.' }
         format.json { head :no_content }
       else
@@ -54,7 +54,8 @@ class Admin::ProductsController < Admin::BaseController
       @product = Product.find(params[:id])
     end
 
+    # OJO!!! Los StrongParemeters definen que podemos modificar
     def product_params
-      params[:product].permit(:name, :key)
+      params[:product].permit(:name, :description, :reference, :price, :stock)
     end
 end
