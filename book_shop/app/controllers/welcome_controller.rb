@@ -6,7 +6,17 @@ class WelcomeController < ApplicationController
   #
   #
   def index
-    @products = Product.last(10)
+    if params[:key] && Category.exists?(key: params[:key])
+      @products = Category.find_by(key: params[:key]).products
+    elsif params[:keyword]
+      unless params[:keyword].blank?
+        @products = Product.where("name like '%#{params[:keyword]}%'")
+      else
+        @products = Product.all
+      end
+    else
+      @products = Product.last(10)
+    end
   end
 
 private

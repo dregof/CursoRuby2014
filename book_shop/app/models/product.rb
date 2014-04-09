@@ -16,6 +16,14 @@ class Product < ActiveRecord::Base
     price / 100
   end
 
+  class << self
+    Product.column_names.each { |attr|
+      define_method "find_by_#{attr}" do |value|
+        find_by(attr.to_sym, value)
+      end
+    }
+  end
+
 private
   def set_price
     self.price = self.price * 100

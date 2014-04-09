@@ -1,18 +1,24 @@
 <div class="well sidebar-nav">
+  <h3>Search</h3>
+  <%= form_tag search_path, remote: true do %>
+    <%= text_field_tag :keyword %>
+    <%= submit_tag "Buscar" %>
+  <% end %>
+  <hr>
   <h3>Sidebar</h3>
   <ul class="nav nav-list">
     <li class="nav-header">Sidebar</li>
-    <% unless @categories.blank? %>
-      <% for category in @categories %>
-        <li><%= link_to category.name, ""  %></li>
-      <% end %>
-    <% else %>
-      No hay categories
-    <% end %>
+    <%= categories_link %>
   </ul>
   <% if administrator_signed_in? %>
     <%= link_to "Log Out",
         destroy_administrator_session_path,
         method: :delete %>
   <% end %>
+  <hr>
+  <h3>Carrito</h3>
+  <ul class="nav nav-list" id="cart">
+
+  </ul>
+  Total: <span id="total_price">0.0€</span>
 </div>

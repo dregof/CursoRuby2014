@@ -17,6 +17,22 @@ class Order < ActiveRecord::Base
   # Scopes
   scope :pending, -> { where(state: "pending") } # -> = lambda
 
+  # State Machine
+  state_machine initial: :pending do
+    event :confirm do
+      transition pending: :confirmed
+      transition denied: :confirmed
+    end
+
+    event :pay do
+      transition confirmed: :payed
+    end
+
+    event :send do
+      transition payed: :sent
+    end
+  end
+
 private
   def generate_code
     value = Order.where(created_at: Time.now.all_year).count + 1

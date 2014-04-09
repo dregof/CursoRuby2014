@@ -1,5 +1,7 @@
-<li class="product">
+<li class="product" id="product_<%= product.id %>">
   <%= image_tag "http://lorempixel.com/200/300/" %><br>
   <%= product.name %><br>
-  <%= product.price %> €
+  <%= product.price %> € <br>
+  <%= link_to "Añadir al carrito", add_product_path(product),
+      remote: true %>
 </li>

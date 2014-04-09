@@ -1,0 +1,4 @@
+<li id="cart_product_<%= product.id %>">
+  1 x <%= product.name %> : <%= product.decimal_price%>
+  <%= link_to "(x)", remove_product_path(product), remote: true %>
+</li>

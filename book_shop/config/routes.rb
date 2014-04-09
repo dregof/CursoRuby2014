@@ -1,7 +1,14 @@
 BookShop::Application.routes.draw do
 
+  get "cart/add_product/:product_id" => "cart#add_product", as: :add_product
+  get "cart/remove_product/:product_id" => "cart#remove_product", as: :remove_product
+
+  post "search" => "welcome#index", as: :search
+
   devise_for :administrators
   devise_for :users
+
+  get "/categories/:key" => "welcome#index", as: :categories
 
   namespace :admin do
     root "dashboard#index"

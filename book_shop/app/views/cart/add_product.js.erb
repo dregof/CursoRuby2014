@@ -1,0 +1,3 @@
+$("#product_<%= @product.id %>").effect("highlight");
+$("#cart").append("<%= escape_javascript(render partial: 'cart/product', locals: {product: @product}) %>");
+$("#cart").effect("shake");
