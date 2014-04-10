@@ -11,5 +11,9 @@ class ActiveSupport::TestCase
   # -- they do not yet inherit this setting
   fixtures :all
 
-  # Add more helper methods to be used by all tests here...
+  def assert_presence(model, field)
+    model.valid?
+    assert_match /can't be blank/, model.errors[field].join,
+                 "#{field} debe dar un presence error"
+  end
 end

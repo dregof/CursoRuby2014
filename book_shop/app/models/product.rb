@@ -7,7 +7,7 @@ class Product < ActiveRecord::Base
   belongs_to :category
 
   # Validaciones
-  validates_associated :category
+  # validates_associated :category
   validates :name, :reference, :description, :price, presence: true
   validates :reference, :price, numericality: true
   validates :reference, uniqueness: true
@@ -24,13 +24,16 @@ class Product < ActiveRecord::Base
     }
   end
 
+  def available?
+    stock > 0
+  end
+
 private
   def set_price
     self.price = self.price * 100
   end
 
   def set_stock_and_position
-    self.stock = 1000
     self.position = Product.all.size + 1
   end
 end

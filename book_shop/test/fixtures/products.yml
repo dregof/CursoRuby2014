@@ -1,17 +1,28 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  description: MyText
-  reference: MyString
-  price: 1
-  stock: 1
-  category_id: 
+ruby:
+  id: 1
+  name: "The Ruby Book"
+  description: "Es un libro de ruby"
+  reference: 123
+  price: 1000
+  stock: 10
+  category_id: 1
 
-two:
+sin_stock:
+  id: 2
   name: MyString
   description: MyText
-  reference: MyString
+  reference: 124
   price: 1
-  stock: 1
-  category_id: 
+  stock: 0
+  category_id: 1
+
+reference_not_valid:
+  id: 3
+  name: MyString
+  description: MyText
+  reference: Ref3014_124
+  price: 1
+  stock: 10
+  category_id: 1

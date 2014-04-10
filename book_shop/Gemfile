@@ -19,6 +19,12 @@ gem 'activerecord-session_store'
 
 gem "carrierwave"
 
+group :development, :test do
+  gem "rspec-rails"
+  gem "mocha"
+  gem "factory_girl_rails"
+end
+
 group :doc do
   gem 'sdoc', require: false
 end

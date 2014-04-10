@@ -12,7 +12,7 @@ class OrderItem < ActiveRecord::Base
   validates :product_id, :order_id, presence: true
   validates_associated :product, :order, on: :create
   validates :quatity, :total_price, presence: true
-  valitates :quatity, :total_price, numericality: true {only_integer: true}
+  validates :quatity, :total_price, numericality: true
 
 private
   def calculate_total_price
