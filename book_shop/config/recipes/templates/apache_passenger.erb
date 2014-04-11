@@ -1,0 +1,15 @@
+<VirtualHost *:80>
+  
+  ServerName beta.softwhisper.es
+  DocumentRoot <%= current_path %>/public
+  
+  RailsEnv development
+
+  <Directory "<%= current_path %>/public">
+    Options FollowSymLinks
+    AllowOverride None
+    Order allow,deny
+    Allow from all
+  </Directory>
+  
+</VirtualHost>

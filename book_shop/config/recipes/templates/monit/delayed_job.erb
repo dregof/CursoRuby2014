@@ -1,0 +1,5 @@
+check process delayed_job with pidfile /home/deployer/apps/feiron/shared/pids/delayed_job.pid
+  stop program = "/etc/init.d/delayed_job stop"
+  start program = "/etc/init.d/delayed_job start"
+  if totalmem > 100.0 MB for 3 cycles then restart
+  if cpu usage > 95% for 3 cycles then restart

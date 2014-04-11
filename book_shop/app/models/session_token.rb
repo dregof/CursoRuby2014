@@ -1,7 +1,6 @@
 class SessionToken < ActiveRecord::Base
   SECRET = "Citic.2014"
 
-  attr_accessible :digest, :secret, :token
   before_create :generate_token
 
 private

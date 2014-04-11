@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140403231737) do
+ActiveRecord::Schema.define(version: 20140411105239) do
 
   create_table "administrators", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -88,6 +88,15 @@ ActiveRecord::Schema.define(version: 20140403231737) do
 
   add_index "products", ["category_id"], name: "index_products_on_category_id"
   add_index "products", ["reference"], name: "index_products_on_reference", unique: true
+  add_index "products", ["reference"], name: "sqlite_autoindex_products_1", unique: true
+
+  create_table "session_tokens", force: true do |t|
+    t.text     "digest"
+    t.string   "token"
+    t.string   "secret"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "sessions", force: true do |t|
     t.string   "session_id", null: false
