@@ -13,7 +13,7 @@ class Product < ActiveRecord::Base
   validates :reference, uniqueness: true
 
   def decimal_price
-    price / 100
+    price.to_f / 100.0
   end
 
   class << self
@@ -26,6 +26,15 @@ class Product < ActiveRecord::Base
 
   def available?
     stock > 0
+  end
+
+  def as_json(options = {})
+    default = {
+      except: [:created_at, :updated_at, :postion],
+      methods: [:decimal_price]
+    }
+    options.merge! default
+    super(options)
   end
 
 private

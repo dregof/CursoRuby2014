@@ -1,3 +1,5 @@
+require "api_constraints"
+
 BookShop::Application.routes.draw do
 
   root 'welcome#index'
@@ -21,8 +23,17 @@ BookShop::Application.routes.draw do
   # http://api.localhost
   #
   constraints subdomain: "api" do
-    namespace :api, path: "/" do
-      resources :products, only: [:index, :show]
+    namespace :api, default: {foramt: "json"} do
+      # vnd.book_shop.v1
+      scope module: :v1, constraints: ApiConstraints.new(default: true, version: 1) do
+        resources :products, only: [:index, :show]
+        resources :categories, only: :index
+      end
+
+      # vnd.book_shop.v2
+      scope module: :v2, constraints: ApiConstraints.new(version: 2) do
+        resources :products, only: [:index, :show]
+      end
     end
   end
 
